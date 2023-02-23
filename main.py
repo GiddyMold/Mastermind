@@ -1,24 +1,5 @@
-import random
 from board import Board
-
-def createboard():
-    table = ['W','Y','B','O','R','M','G']
-    colors = (table[random.randint(0,6)],table[random.randint(0,6)],table[random.randint(0,6)],table[random.randint(0,6)])
-    return colors
-
-def menu():
-    guess = input("Guess: ")
-    if len(guess) != 4:
-        print("You mistyped, try again:")
-        return False
-    for i in guess:
-        if i.islower():
-            print("CAPS ON THIS TIME! No lowercase letters!")
-            return False
-        if i.isdigit():
-            print("No digits fellow friend! Only letters!")
-            return False        
-    return guess
+from guess import Guess
 
 def win(left,board):
     print("Congratulations! You won with",left,"guesses left!")
@@ -64,11 +45,14 @@ def play(colors,guess,iteration):
     print(str(9-iteration)+" guesses left!")  
 
 
+guess = Guess()
 
-board = createboard()
+colors = Board()
+board = colors.createboard()
 print(board)
+
 for i in range(10):
-    menuVAR = menu()
+    menuVAR = guess.menu()
     while(menuVAR==False):
-        menuVAR = menu()
+        menuVAR = guess.menu()
     play(board,menuVAR,i)
