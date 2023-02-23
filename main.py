@@ -1,4 +1,5 @@
 import random
+from board import Board
 
 def createboard():
     table = ['W','Y','B','O','R','M','G']
