@@ -1,8 +1,13 @@
 from board import Board
 from guess import Guess
 
+def lost(board):
+    print("\nGAME OVER! You lost!")
+    print("The board was:",board)
+    exit()
+
 def win(left,board):
-    print("Congratulations! You won with",left,"guesses left!")
+    print("\nCongratulations! You won with",left,"guesses left!")
     print("The board was:",board)
     exit()
 
@@ -40,9 +45,13 @@ def play(colors,guess,iteration):
     if(correctPOS==4):
         win(9-iteration,colors)
 
-    print("Correct positions: "+str(correctPOS))
-    print("Incorrect positions: "+str(incorrectPOS))
-    print(str(9-iteration)+" guesses left!")  
+    if iteration < 9:
+        print("Correct positions: "+str(correctPOS))
+        print("Incorrect positions: "+str(incorrectPOS))
+        if iteration < 8:
+            print(str(9-iteration)+" guesses left!\n")
+        else:
+            print("1 guess left!\n")
 
 
 guess = Guess()
@@ -51,8 +60,11 @@ colors = Board()
 board = colors.createboard()
 print(board)
 
+guess.start()
+
 for i in range(10):
     menuVAR = guess.menu()
     while(menuVAR==False):
         menuVAR = guess.menu()
     play(board,menuVAR,i)
+lost(board)
