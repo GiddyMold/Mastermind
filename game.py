@@ -5,11 +5,13 @@ class Game():
     def lost(self,board):
         print("\nGAME OVER! You lost!")
         print("The board was:",board)
+        self.temp = input()
         exit()
 
     def win(self,left,board):
         print("\nCongratulations! You won with",left,"guesses left!")
         print("The board was:",board)
+        self.temp = input()
         exit()
 
     def play(self,colors,guess,iteration):

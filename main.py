@@ -7,7 +7,7 @@ game = Game()
 colors = Board()
 board = colors.createboard()
 
-print(board)
+#print(board)
 
 guess.start()
 for i in range(10):
