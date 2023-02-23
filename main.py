@@ -3,15 +3,13 @@ from guess import Guess
 from game import Game
 
 guess = Guess()
-
+game = Game()
 colors = Board()
 board = colors.createboard()
+
 print(board)
 
-game = Game()
-
 guess.start()
-
 for i in range(10):
     menuVAR = guess.menu()
     while(menuVAR==False):
